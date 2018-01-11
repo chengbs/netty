@@ -35,10 +35,10 @@ import static io.netty.util.internal.ObjectUtil.checkNotNull;
  * {@link Unpooled#wrappedBuffer(byte[])} instead of calling the constructor explicitly.
  */
 public class UnpooledHeapByteBuf extends AbstractReferenceCountedByteBuf {
-
+    // 缓冲区分配器，用于UnpooledHeapByteBuf的内存分配。在UnpooledHeapByteBuf构造器中实例化
     private final ByteBufAllocator alloc;
-    byte[] array;
-    private ByteBuffer tmpNioBuf;
+    byte[] array; // 字节数组作为缓冲区
+    private ByteBuffer tmpNioBuf; // 实现ByteBuf与NIO中ByteBuffer的转换
 
     /**
      * Creates a new heap buffer with a newly allocated byte array.

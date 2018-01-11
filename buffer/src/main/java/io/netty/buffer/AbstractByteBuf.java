@@ -56,11 +56,11 @@ public abstract class AbstractByteBuf extends ByteBuf {
     static final ResourceLeakDetector<ByteBuf> leakDetector =
             ResourceLeakDetectorFactory.instance().newResourceLeakDetector(ByteBuf.class);
 
-    int readerIndex;
-    int writerIndex;
-    private int markedReaderIndex;
-    private int markedWriterIndex;
-    private int maxCapacity;
+    int readerIndex; // 读索引
+    int writerIndex; // 写索引
+    private int markedReaderIndex; // 标记读索引
+    private int markedWriterIndex; // 标记写索引
+    private int maxCapacity; // 缓冲区的最大容量
 
     protected AbstractByteBuf(int maxCapacity) {
         if (maxCapacity < 0) {
@@ -956,7 +956,7 @@ public abstract class AbstractByteBuf extends ByteBuf {
 
     @Override
     public ByteBuf writeByte(int value) {
-        ensureWritable0(1);
+        ensureWritable0(1); // 检验是否可以写入
         _setByte(writerIndex++, value);
         return this;
     }

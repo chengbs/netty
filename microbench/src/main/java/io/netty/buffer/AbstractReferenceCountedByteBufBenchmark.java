@@ -52,9 +52,9 @@ public class AbstractReferenceCountedByteBufBenchmark extends AbstractMicrobench
     @BenchmarkMode(Mode.SampleTime)
     @OutputTimeUnit(TimeUnit.NANOSECONDS)
     public boolean retainReleaseUncontended() {
-        buf.retain();
+        buf.retain(); // 计数加1
         Blackhole.consumeCPU(delay);
-        return buf.release();
+        return buf.release(); // 计数减一
     }
 
     @Benchmark
